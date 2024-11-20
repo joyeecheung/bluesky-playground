@@ -1,7 +1,7 @@
 // Extract the handle and post ID from the URL
 // URL format: https://bsky.app/profile/${handle}/post/${postId}
 // https://bsky.app/profile/${did}/post/${postId}
-import { RichText } from "@atproto/api";
+import AtpAgent, { RichText } from "@atproto/api";
 
 export async function getPostInfoFromUrl(agent, postUrl) {
   const urlParts = postUrl.split('/');
@@ -24,7 +24,14 @@ export async function getPostInfoFromUrl(agent, postUrl) {
   return { uri, cid };
 }
 
+/**
+ * 
+ * @param {AtpAgent} agent 
+ * @param {string} richText 
+ * @param {{quoting?: string, replying?: string}} options 
+ */
 export async function post(agent, richText, options = {}) {
+  // TODO(joyeecheung): support images and embeds.
   const rt = new RichText({
     text: richText
   });
@@ -52,7 +59,5 @@ export async function post(agent, richText, options = {}) {
       parent: root,
     };
   }
-  console.log('Posting', record);
-  const res = await agent.post(record);
-  console.log('Post result', res);
+  return agent.post(record);
 }

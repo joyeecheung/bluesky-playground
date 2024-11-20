@@ -1,9 +1,9 @@
-import { login } from './login.js';
+import { loginFromEnv } from './lib/login.js';
 import assert from 'node:assert';
 
 assert(process.env.BLUESKY_FEED_HANDLE);
 
-const agent = await login();
+const agent = await loginFromEnv();
 
 const profile = await agent.resolveHandle({ handle: process.env.BLUESKY_FEED_HANDLE });
 const did = profile.data.did;

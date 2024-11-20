@@ -1,12 +1,12 @@
 
 // https://docs.bsky.app/docs/get-started
 import assert from 'node:assert';
-import { login } from './login.js';
+import { loginFromEnv } from './lib/login.js';
 import { getPostInfoFromUrl } from './lib/posts.js';
 
 assert(process.env.BLUESKY_REPOST_URL);
 
-const agent = await login();
+const agent = await loginFromEnv();
 
 const result = await getPostInfoFromUrl(agent, process.env.BLUESKY_REPOST_URL);
 console.log('Post info', result);
