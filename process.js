@@ -10,6 +10,7 @@ const requestFilePath = path.resolve(process.argv[2]);
 const request = JSON.parse(fs.readFileSync(requestFilePath, 'utf8'));
 
 assert(request.account, 'JSON must contain "account" field');
+const account = request.account;
 const identifierKey = `BLUESKY_IDENTIFIER_${account}`;
 const passwordKey = `BLUESKY_APP_PASSWORD_${account}`;
 assert(process.env[identifierKey], `Must provide ${identifierKey} in the environment variable.`);
@@ -45,7 +46,7 @@ switch(request.action) {
     assert(request.richText, 'JSON must contain "richText" field');
     assert(request.replyURL, 'JSON must contain "replyURL" field');
     console.log(`Replying...`, request.replyURL, request.richText);
-    result = await post(agent, request.richText, { quoting: request.replyURL });
+    result = await post(agent, request.richText, { replying: request.replyURL });
     break;
   }
   default:
