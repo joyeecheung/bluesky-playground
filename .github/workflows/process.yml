@@ -48,7 +48,7 @@ jobs:
         run: |
           for file in $NEW_JSON_FILES; do
             echo "Processing $file..."
-            node actions/process.js "$file"
+            node process.js "$file"
           done
 
       - name: Commit and push changes
