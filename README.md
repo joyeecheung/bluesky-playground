@@ -41,12 +41,13 @@ Currently, scripts for the actions are under `./actions` folder. Records of requ
 
 ## Perform actions with a pull request
 
-1. Open a pull request targeting the `main` branch to add a JSON file or multiple JSON files to `records/new/`
-  - The file name can be anything, as long as it ends with `.json`, though its better to give it a descriptive name like `repost.json`. The file will be renamed and moved to `records/processed` later so it doesn't matter how it is named during the draft phase. 
+1. Open a pull request targeting the `main` branch to add a JSON file or multiple JSON files to `records/new/`. 
+     - The file name can be anything, as long as it ends with `.json`, though its better to give it a descriptive name like `repost.json`. The file will be renamed and moved to `records/processed` later so it doesn't matter how it is named during the draft phase. 
+     - For example, see https://github.com/joyeecheung/bluesky-playground/pull/8
 2. The JSON files must contain:
-  - `"action"`: currently `"post"`, `"repost"`, `"quote-post"` and `"reply"` are supported
-  - `"account"`: it should be one of the account set up in the previous section, for example `"PIXEL"` if the corresponding secret is `BLUESKY_APP_PASSWORD_PIXEL`.
-  - For other fields see the examples under [`records/new`](./records/new).
+     - `"action"`: currently `"post"`, `"repost"`, `"quote-post"` and `"reply"` are supported
+     - `"account"`: it should be one of the account set up in the previous section, for example `"PIXEL"` if the corresponding secret is `BLUESKY_APP_PASSWORD_PIXEL`.
+     - For other fields see the examples under [`records/new`](./records/new).
 3. When the PR is opened, the [validate-json](./.github/workflows/validate.yml) workflow will run to make sure the JSON files are correctly filled. It will verify the URLs filled in the JSON files are valid.
 4. When the PR is merged, the [process-json](./.github/workflows/process.yml) workflow will run to perform the requested actions, and when it's done, it will move the processed JSON files to `./records/processed` and renamed the file to `YYYY-MM-DD-ID.json` where ID is an incremental ID based on the number of files already processed on that date. It will also add in additional details of the performed actions (e.g. CID and URI of the posted post).
 
