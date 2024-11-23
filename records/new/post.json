@@ -1,4 +1,5 @@
 {
   "action": "post",
-  "account": "PIXEL"
+  "account": "PIXEL",
+  "richText": "Hello from a PR!"
 }
