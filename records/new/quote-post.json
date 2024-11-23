@@ -1,5 +1,5 @@
 {
-  "action": "reply",
+  "action": "quote-post",
   "account": "PIXEL",
   "richText": "Reply from automation",
   "replyURL": "https://bsky.app/profile/pixel-voyager.bsky.social/post/3lbg7zd32an2s"
