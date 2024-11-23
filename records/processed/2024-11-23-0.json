@@ -1,0 +1,14 @@
+{
+  "action": "post",
+  "account": "PIXEL",
+  "richText": "Hello from a PR!",
+  "result": {
+    "uri": "at://did:plc:tw2ov5bciclbz7b45sh4xlua/app.bsky.feed.post/3lbnklfndrk23",
+    "cid": "bafyreihqcayxohjbmpxmapmq5767ndytnaag4wjihc4ye5duxypukjco3q",
+    "commit": {
+      "cid": "bafyreidpdqi4k7ryzwrl4ofrm6hkz4ugalixcb7ghb7ixpixxz5nxkhu3q",
+      "rev": "3lbnklfnkmc23"
+    },
+    "validationStatus": "valid"
+  }
+}
