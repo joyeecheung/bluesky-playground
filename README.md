@@ -8,19 +8,21 @@ Currently, scripts for the actions are under `./actions` folder. Records of requ
 
 ```
 - .github/       # Contains workflows alive
+
 - actions/       # scripts for the actions
-  - lib/
-  - test/
-    - integration.js  # This can be run locally to test process.js on a test account
-  - process.js  # a script that takes a path/to/new/name.json to perform actions
-  - login-and-validate.js # part of process.js, can be run alone to validate a JSON
+    - lib/
+    - test/
+        - integration.js  # This can be run locally to test process.js on a test account
+    - process.js  # a script that takes a path/to/new/name.json to perform actions
+    - login-and-validate.js # part of process.js, can be run alone to validate a JSON
+
 - records/
-  - new/  # Where requests can be added in the form of JSON via pull requests
-          # It contains some examples with the name xxx.json.example
-  - processed/  # Requests in the new folder will be moved here with information
-                # about the performed actions added. The file will be renamed
-                # to YYYY-MM-DD-ID.json, where ID is incremental index for files
-                # processed on that date.
+    - new/  # Where requests can be added in the form of JSON via pull requests.
+            # It contains some existing examples with the name xxx.json.example
+    - processed/  # Requests in the new folder will be moved here with information
+                  # about the performed actions added. The file will be renamed
+                  # to YYYY-MM-DD-ID.json, where ID is incremental index for files
+                  # processed on that date.
 ```
 
 ## Set it up
@@ -61,7 +63,7 @@ $ cd actions
 $ yarn install
 ```
 
-There aren't a lot of tests right now. Though you could do:
+There aren't a lot of tests right now. Though to run the test locally to perform a series actions on a live test account, you could do:
 
 ```
 cd ./actions
