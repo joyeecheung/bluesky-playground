@@ -3,8 +3,8 @@ import assert from 'node:assert';
 import process from 'node:process';
 import path from 'node:path';
 import { login } from './lib/login.js';
-import { getPostInfoFromUrl, post } from './lib/posts.js';
-import { validateAccount, validateRequest, validateAndExtendRequestReferences } from './validate.js';
+import { post } from './lib/posts.js';
+import { validateAccount, validateRequest, validateAndExtendRequestReferences } from './lib/validator.js';
 
 // This script takes a path to a JSON with the pattern $base_path/new/$any_name.json,
 // where $any_name can be anything, and then performs the action specified in it.
@@ -13,24 +13,8 @@ import { validateAccount, validateRequest, validateAndExtendRequestReferences } 
 // starting from 0 based on the number of existing JSONs processed on the same date
 // and already in the processed directory.
 
-// The JSON file must contains the following fields:
-// - "account": a string field indicating the account to use to perform the action.
-//              For it to work, this script expects BLUESKY_IDENTIFIER_$account and
-//              BLUESKY_APP_PASSWORD_$account to be set in the environment variables.
-// - "action": currently "post", "repost", "quote-post", "reply" are supported.
 assert(process.argv[2], `Usage: node process.js $base_path/new/$any_name.json`);
-const requestFilePath = path.resolve(process.argv[2]);
-const request = JSON.parse(fs.readFileSync(requestFilePath, 'utf8'));
-
-// Validate the account field.
-const account = validateAccount(request, process.env);
-validateRequest(request);
-
-// Authenticate.
-const agent = await login(account);
-
-// Validate and extend the post URLs in the request into { cid, uri } records.
-await validateAndExtendRequestReferences(agent, request);
+const { agent, request, requestFilePath } = await import('./login-and-validate.js');
 
 let result;
 switch(request.action) {

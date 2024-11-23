@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { getPostInfoFromUrl } from './lib/posts.js';
+import { getPostInfoFromUrl } from './posts.js';
 
 export function validateAccount(request, env) {
   assert(request.account, 'JSON must contain "account" field');
