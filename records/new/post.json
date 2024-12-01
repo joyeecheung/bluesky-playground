@@ -1,6 +1,0 @@
-{
-  "action": "post",
-  "account": "PIXEL",
-  "richText": "We are testing collaborative Bluesky content management. This post is sent from a GitHub action triggered by a merged pull request in https://github.com/joyeecheung/bluesky-playground/pull/9!"
-}
-
