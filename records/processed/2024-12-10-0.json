@@ -1,0 +1,14 @@
+{
+  "action": "post",
+  "account": "PIXEL",
+  "richText": "Testing line breaks!\n\n- point 1\n- point 2\n\nend",
+  "result": {
+    "uri": "at://did:plc:tw2ov5bciclbz7b45sh4xlua/app.bsky.feed.post/3lcxq5p63bh2z",
+    "cid": "bafyreifydnh4uzy7b6354vz6lflgk5ja2cds45fydg7uszoiltvotcxcdu",
+    "commit": {
+      "cid": "bafyreifgk3erimvjemq4vklkhc5yp4ya6afagi3ihdlfodlblzngszob6u",
+      "rev": "3lcxq5p676h2z"
+    },
+    "validationStatus": "valid"
+  }
+}
